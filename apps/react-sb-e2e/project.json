@@ -1,0 +1,28 @@
+{
+  "root": "apps/react-sb-e2e",
+  "sourceRoot": "apps/react-sb-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/react-sb-e2e/cypress.json",
+        "devServerTarget": "react-sb:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-sb:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-sb-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["react-sb"]
+}
