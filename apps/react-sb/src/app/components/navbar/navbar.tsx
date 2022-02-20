@@ -4,24 +4,31 @@ import { Image } from 'primereact/image';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { Link, Outlet } from 'react-router-dom';
 
 /* eslint-disable-next-line */
-export interface NavbarProps { }
+export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
   return (
-    <>
+    <div>
       <Menubar
         model={items}
-        start={<>
+        start={
           <div className={styles['start-menubar']}>
             <img src="assets/vector.png" className={styles['logo']} />
-            <InputText placeholder="Search" type="text" />
+            <span className="p-input-icon-left">
+              <i className="pi pi-search" />
+              <InputText placeholder="Search" />
+            </span>
+            <Link to="/users">Users</Link>
+            <Link to="/product">Product</Link>
           </div>
-        </>}
+        }
         end={<Avatar image="assets/user.png" shape="circle" />}
       />
-    </>
+      <Outlet />
+    </div>
   );
 }
 
@@ -37,27 +44,26 @@ const items = [
         items: [
           {
             label: 'Bookmark',
-            icon: 'pi pi-fw pi-bookmark'
+            icon: 'pi pi-fw pi-bookmark',
           },
           {
             label: 'Video',
-            icon: 'pi pi-fw pi-video'
+            icon: 'pi pi-fw pi-video',
           },
-
-        ]
+        ],
       },
       {
         label: 'Delete',
-        icon: 'pi pi-fw pi-trash'
+        icon: 'pi pi-fw pi-trash',
       },
       {
-        separator: true
+        separator: true,
       },
       {
         label: 'Export',
-        icon: 'pi pi-fw pi-external-link'
-      }
-    ]
+        icon: 'pi pi-fw pi-external-link',
+      },
+    ],
   },
   {
     label: 'Edit',
@@ -65,22 +71,21 @@ const items = [
     items: [
       {
         label: 'Left',
-        icon: 'pi pi-fw pi-align-left'
+        icon: 'pi pi-fw pi-align-left',
       },
       {
         label: 'Right',
-        icon: 'pi pi-fw pi-align-right'
+        icon: 'pi pi-fw pi-align-right',
       },
       {
         label: 'Center',
-        icon: 'pi pi-fw pi-align-center'
+        icon: 'pi pi-fw pi-align-center',
       },
       {
         label: 'Justify',
-        icon: 'pi pi-fw pi-align-justify'
+        icon: 'pi pi-fw pi-align-justify',
       },
-
-    ]
+    ],
   },
   {
     label: 'Users',
@@ -89,12 +94,10 @@ const items = [
       {
         label: 'New',
         icon: 'pi pi-fw pi-user-plus',
-
       },
       {
         label: 'Delete',
         icon: 'pi pi-fw pi-user-minus',
-
       },
       {
         label: 'Search',
@@ -106,17 +109,17 @@ const items = [
             items: [
               {
                 label: 'Print',
-                icon: 'pi pi-fw pi-print'
-              }
-            ]
+                icon: 'pi pi-fw pi-print',
+              },
+            ],
           },
           {
             icon: 'pi pi-fw pi-bars',
-            label: 'List'
-          }
-        ]
-      }
-    ]
+            label: 'List',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Events',
@@ -128,14 +131,13 @@ const items = [
         items: [
           {
             label: 'Save',
-            icon: 'pi pi-fw pi-calendar-plus'
+            icon: 'pi pi-fw pi-calendar-plus',
           },
           {
             label: 'Delete',
-            icon: 'pi pi-fw pi-calendar-minus'
+            icon: 'pi pi-fw pi-calendar-minus',
           },
-
-        ]
+        ],
       },
       {
         label: 'Archieve',
@@ -143,15 +145,14 @@ const items = [
         items: [
           {
             label: 'Remove',
-            icon: 'pi pi-fw pi-calendar-minus'
-          }
-        ]
-      }
-    ]
+            icon: 'pi pi-fw pi-calendar-minus',
+          },
+        ],
+      },
+    ],
   },
   {
     label: 'Quit',
-    icon: 'pi pi-fw pi-power-off'
-  }
+    icon: 'pi pi-fw pi-power-off',
+  },
 ];
-
