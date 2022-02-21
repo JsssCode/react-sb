@@ -1,0 +1,19 @@
+@mixin line-overflow($line-clamp: 4) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: box;
+    -webkit-line-clamp: $line-clamp;
+    /* stylelint-disable-next-line property-no-unknown */
+    box-orient: vertical;
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-box-orient: vertical;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
+    word-wrap: break-word;
+  
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+    }
+  }

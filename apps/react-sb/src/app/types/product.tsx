@@ -1,6 +1,7 @@
 import { IProfile } from './profile';
 
 export interface IProduct {
+  id: number;
   info: IProductInfo;
   imageArray: string[];
 }

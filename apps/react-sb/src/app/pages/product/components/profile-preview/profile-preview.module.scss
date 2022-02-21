@@ -1,0 +1,23 @@
+@import '../../../../../styles/mixin.scss';
+
+.name {
+    @include line-overflow(1);
+
+    color: var(--primary-color);
+    max-width: 240px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    text-decoration: none;
+}
+
+.role {
+    font-size: 12px;
+    color: var(--gray-500);
+    text-transform: lowercase;
+    line-height: 18px;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

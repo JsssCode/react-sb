@@ -1,0 +1,39 @@
+
+@import '../../../../../styles/mixin.scss';
+
+:host {
+    position: relative;
+}
+
+.title {
+    @include line-overflow(1);
+    
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 36px;
+    width: 100%;
+    padding-right: 20px
+}
+
+.subtitle {
+    @include line-overflow(1);
+
+    font-size: 14px;
+    display: flex;
+    gap: 7px;
+    padding: 10px 0;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.collection {
+    @include line-overflow(1);
+
+    color: var(--primary-color);
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
