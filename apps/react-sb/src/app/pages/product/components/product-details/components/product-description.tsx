@@ -1,9 +1,9 @@
-import ProfilePreview from '../profile-preview/profile-preview';
+import ProfilePreview from '../../profile-preview/profile-preview';
 import { Card } from 'primereact/card';
 import React, { FC } from 'react';
-import { IProduct } from '../../../../types/product';
-import styles from './product-details.module.scss';
-import ProductTitleSection from '../product-title/product-title';
+import { IProduct } from '../../../../../types/product';
+import styles from '../product-details.module.scss';
+import ProductTitleSection from '../../product-title/product-title';
 
 interface IProductDescriptionProps {
   product: IProduct;

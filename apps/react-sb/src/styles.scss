@@ -4,6 +4,14 @@
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.css';
 @import './styles//mixin.scss';
+@import './styles/tab-panel.scss';
+
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
 
 .p-menubar {
     background: none;
@@ -12,14 +20,16 @@
 
 :root {
     --border-color: #eaeaea;
+    --navbar-height: 73px;
+    --footer-height: 385px;
 }
 
-.p-button-rounded {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+
+.layout {
+    padding: 15px 90px;
 }
 
-.p-button.p-button-outlined {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+.content-container {
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
 }

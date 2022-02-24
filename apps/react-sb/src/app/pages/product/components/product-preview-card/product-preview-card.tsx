@@ -1,9 +1,10 @@
 import ItemImage from '../../../../components/shared/item-image/item-image';
 import { IProduct } from './../../../../types/product';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import ProductTitleSection from '../product-title/product-title';
 import ProfilePreview from '../profile-preview/profile-preview';
 import styles from './product-preview-card.module.scss';
+import { useParams } from 'react-router-dom';
 
 interface IProductPreviewCardProps {
   product: IProduct;
@@ -11,8 +12,22 @@ interface IProductPreviewCardProps {
 export const ProductPreviewCard: FC<IProductPreviewCardProps> = ({
   product,
 }) => {
+  const [activeProductId, setCurrentProductId] = useState<number>();
+  const params = useParams();
+
+  useEffect(() => {
+    if (params['productId']) {
+      setCurrentProductId(parseInt(params['productId'], 10));
+    }
+  }, [params]);
+
   return (
-    <div className={styles['card']}>
+    <div
+      className={[
+        styles['card'],
+        product.id === activeProductId ? styles['card__active'] : '',
+      ].join(' ')}
+    >
       <div>
         <div>
           <div className={styles['section']}>

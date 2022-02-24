@@ -1,33 +1,85 @@
 import styles from './navbar.module.scss';
 import { Avatar } from 'primereact/avatar';
-import { Image } from 'primereact/image';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useState } from 'react';
 import { Button } from 'primereact/button';
-import { Link, Outlet } from 'react-router-dom';
+import ItemImage, { ImageVariant } from '../shared/item-image/item-image';
+import Footer from '../footer/footer';
+import { ILinkItem } from '../../types/route';
 
 /* eslint-disable-next-line */
 export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
+  const [linkArray, setLinkArray] = useState<Array<ILinkItem>>([
+    {
+      path: '/users',
+      title: 'users',
+    },
+    {
+      path: '/product',
+      title: 'product',
+    },
+  ]);
   return (
     <div>
-      <Menubar
-        model={items}
-        start={
-          <div className={styles['start-menubar']}>
-            <img src="assets/vector.png" className={styles['logo']} />
-            <span className="p-input-icon-left">
-              <i className="pi pi-search" />
-              <InputText placeholder="Search" />
-            </span>
-            <Link to="/users">Users</Link>
-            <Link to="/product">Product</Link>
+      <nav
+        className={[styles['navbar'], 'layout grid grid-nogutter'].join(' ')}
+      >
+        <div className="col-5">
+          <div className="flex align-items-center">
+            <img src="assets/logo/logo.png" alt="" />
+            <img className="ml-3" src="assets/logo/DropUp.png" alt="" />
+            <div className="ml-5 w-full">
+              <span className="p-input-icon-left w-full">
+                <i className="pi pi-search" />
+                <InputText placeholder="Search" className="w-full" />
+              </span>
+            </div>
           </div>
-        }
-        end={<Avatar image="assets/user.png" shape="circle" />}
-      />
-      <Outlet />
+        </div>
+
+        <div className="col col-offset-1 ">
+          <div className="flex align-items-center justify-content-between">
+            <div className="flex align-items-center">
+              {linkArray.map((link) => (
+                <NavLink
+                  to={link.path}
+                  key={link.path}
+                  className={({ isActive }) =>
+                    [
+                      styles['link'],
+                      styles[isActive ? 'link__active' : ''],
+                    ].join(' ')
+                  }
+                >
+                  {link.title}
+                </NavLink>
+              ))}
+            </div>
+            <div className="flex align-items-center">
+              <Button
+                label="12"
+                icon="pi pi-bell"
+                iconPos="left"
+                className="p-button-outlined p-button-rounded"
+              />
+              <Button className="p-button p-button-rounded mx-3">Create</Button>
+              <ItemImage
+                srcImage="assets/user-ava/avatar6.png"
+                widthImage="36px"
+                variant={ImageVariant.rounded}
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div className="flex flex-column justify-content-between content-container">
+        <Outlet />
+        <Footer />
+      </div>
     </div>
   );
 }

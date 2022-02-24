@@ -3,3 +3,8 @@ export interface IRoute {
   path: string;
   exact: boolean;
 }
+
+export interface ILinkItem {
+  path: string;
+  title: string;
+}
