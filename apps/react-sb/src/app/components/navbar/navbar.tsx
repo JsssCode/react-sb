@@ -33,9 +33,12 @@ export function Navbar(props: NavbarProps) {
             <img src="assets/logo/logo.png" alt="" />
             <img className="ml-3" src="assets/logo/DropUp.png" alt="" />
             <div className="ml-5 w-full">
-              <span className="p-input-icon-left w-full">
+              <span className="p-input-icon-left w-full ">
                 <i className="pi pi-search" />
-                <InputText placeholder="Search" className="w-full" />
+                <InputText
+                  placeholder="Search"
+                  className="w-full border-round"
+                />
               </span>
             </div>
           </div>

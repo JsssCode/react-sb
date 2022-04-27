@@ -5,6 +5,7 @@ import ProductTitleSection from '../product-title/product-title';
 import ProfilePreview from '../profile-preview/profile-preview';
 import styles from './product-preview-card.module.scss';
 import { useParams } from 'react-router-dom';
+import ProductStatistic from '../product-statistic/product-statistic';
 
 interface IProductPreviewCardProps {
   product: IProduct;
@@ -33,12 +34,14 @@ export const ProductPreviewCard: FC<IProductPreviewCardProps> = ({
           <div className={styles['section']}>
             <ProfilePreview profile={product.info.creator} />
             <ItemImage widthImage="252px" srcImage={product.imageArray[0]} />
-            <ProductTitleSection product={product} actions={true} />
+            <ProductTitleSection product={product} />
           </div>
           <div className={styles['section']}>
             <div className="grid grid-nogutter align-items-end">
               <div className="col">
-                <div className="font-light text-500 text-sm">Last sold for</div>
+                <div className="font-light text-500 text-sm ">
+                  Last sold for
+                </div>
                 <div className="font-bold text-primary text-base">12 ETH</div>
               </div>
               <div className="col col-offset-1">
@@ -48,6 +51,9 @@ export const ProductPreviewCard: FC<IProductPreviewCardProps> = ({
                 />
               </div>
             </div>
+          </div>
+          <div className={styles['section']}>
+            <ProductStatistic statistic={product.statistic} isPreview={true} />
           </div>
         </div>
       </div>

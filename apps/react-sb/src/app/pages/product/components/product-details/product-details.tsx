@@ -11,6 +11,7 @@ import ProductList, { ProductListVariants } from '../product-list/product-list';
 import ProductHistory from './components/product-history';
 import useFetching from '../../../../hooks/useRequest';
 import Loader from '../../../../components/loader/loader';
+import styles from './product-details.module.scss';
 
 const ProductDetails = () => {
   const params = useParams();
@@ -37,14 +38,16 @@ const ProductDetails = () => {
   }, [product]);
 
   return (
-    <div className="flex flex-column justify-content-between">
+    <div className="flex flex-column justify-content-between mt-6">
       {isProductLoading || !product ? (
-        <Loader />
+        <div className={styles['loader']}>
+          <Loader />
+        </div>
       ) : (
         <div>
           <div>
-            <div className="layout grid grid-nogutter align-items-stretch">
-              <div className="flex  col-6">
+            <div className="layout grid grid-nogutter align-items-stretch ">
+              <div className="flex justify-content-center col-6">
                 <div>
                   <div className="column">
                     {product.imageArray.map((imageUrl) => (
@@ -64,15 +67,17 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className="col-6 flex flex-column align-items-center">
-                <ProductDescription product={product} />
-                <div className="flex justify-content-center align-items-center mt-4">
-                  <Button className="p-button-rounded">
-                    <span className="px-4"> Buy for 12 ETH</span>
-                  </Button>
-                  <Button className="ml-4 p-button-outlined p-button-rounded ">
-                    <span className="px-5"> Place a Bid</span>
-                  </Button>
+              <div className="col-6 flex flex-column align-items-start">
+                <div className="flex flex-column align-items-center">
+                  <ProductDescription product={product} />
+                  <div className="flex justify-content-center align-items-center mt-4">
+                    <Button className="p-button-rounded">
+                      <span className="px-4"> Buy for 12 ETH</span>
+                    </Button>
+                    <Button className="ml-4 p-button-outlined p-button-rounded ">
+                      <span className="px-5"> Place a Bid</span>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
