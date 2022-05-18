@@ -1,4 +1,4 @@
-import ProductService from '../../../../api/product-service';
+import ProductService, { productApi } from '../../../../api/product-service';
 import { IProduct } from '../../../../types/product';
 import React, { FC, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -17,12 +17,14 @@ export interface IProductListProps {
   variant?: ProductListVariants;
 }
 
-const ProductList: FC<IProductListProps> = ({ variant }) => {
-  const dispatch = useAppDispatch();
-  const { products, isLoading, error } = useAppSelector(state => state.productListReducer)
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, []);
+const ProductList2: FC<IProductListProps> = ({ variant }) => {
+  const [limit, setLimit] = useState(3)
+  const { data: products, isLoading, error } = productApi.useFetchAllProductQuery(limit);
+  const [updateProduct, { error: updateProductError, isLoading: updateProductLoading }] = productApi.useUpdateProductMutation()
+
+  const handleUpdate = (product: IProduct) => {
+    updateProduct(product);
+  }
 
   return (
     <div className="relative">
@@ -34,7 +36,7 @@ const ProductList: FC<IProductListProps> = ({ variant }) => {
           className={
             variant === ProductListVariants.PREVIEW
               ? 'flex overflow-x-auto'
-              : 'flex flex-wrap'
+              : 'flex flex-column flex-wrap'
           }
         >
           {products?.map((product) => (
@@ -56,4 +58,4 @@ const ProductList: FC<IProductListProps> = ({ variant }) => {
   );
 };
 
-export default ProductList;
+export default ProductList2;

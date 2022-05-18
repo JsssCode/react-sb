@@ -129,9 +129,6 @@ function ProductHistory() {
   const changeFilter = (key: PriceHistoryEventType): void => {
     setFilter({...filter, [key]: !filter[key]})
 
-
-
-    // setFilterSelected(Object.keys(filter).filter((key: PriceHistoryEventType) => filter[key]))
   }
 
   const headerTemplate = () => {

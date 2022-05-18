@@ -1,32 +1,35 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import Navbar from './components/navbar/navbar';
-import { Route, Routes } from 'react-router-dom';
-import { routes } from './routes/routes';
 import styles from './app.module.scss';
+import { AuthContext } from '../context';
+import { useEffect, useState } from 'react';
+import AppRouter from './UI/AppRouter';
+import Loader from './components/loader/loader';
 
 export function App() {
+  const [isAuth, setIsAuth] = useState(false);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (localStorage.getItem('auth')) {
+        setIsAuth(true)
+      }
+      setIsAuthLoading(false)
+    }, 1000);
+
+  }, [])
   return (
     <div className={styles['app']}>
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          {routes.map((route) => (
-            <Route
-              path={route.path}
-              element={route.component}
-              key={route.path}
-            />
-          ))}
+      <AuthContext.Provider value={{
+        isAuth,
+        setIsAuth
+      }}>
+        {isAuthLoading
+          ? <Loader />
+          : <AppRouter />
+        }
 
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: '1rem' }}>
-                <p>There's nothing here!</p>
-              </main>
-            }
-          />
-        </Route>
-      </Routes>
+      </AuthContext.Provider>
     </div>
   );
 }

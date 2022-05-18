@@ -9,9 +9,11 @@ import ProductStatistic from '../product-statistic/product-statistic';
 
 interface IProductPreviewCardProps {
   product: IProduct;
+  update?: (product: IProduct) => void;
 }
 export const ProductPreviewCard: FC<IProductPreviewCardProps> = ({
   product,
+  update
 }) => {
   const [activeProductId, setCurrentProductId] = useState<number>();
   const params = useParams();
@@ -22,8 +24,14 @@ export const ProductPreviewCard: FC<IProductPreviewCardProps> = ({
     }
   }, [params]);
 
+  const handleUpdate = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    const name = prompt(product.info.name) || "";
+    update && update({ ...product, info: { ...product.info, name } })
+  }
   return (
     <div
+      // onClick={handleUpdate}
       className={[
         styles['card'],
         product.id === activeProductId ? styles['card__active'] : '',

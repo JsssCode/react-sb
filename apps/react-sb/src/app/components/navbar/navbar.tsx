@@ -3,16 +3,21 @@ import { Avatar } from 'primereact/avatar';
 import { Menubar } from 'primereact/menubar';
 import { InputText } from 'primereact/inputtext';
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'primereact/button';
 import ItemImage, { ImageVariant } from '../shared/item-image/item-image';
 import Footer from '../footer/footer';
 import { ILinkItem } from '../../types/route';
+import { mockUser } from '../../mock/product-mock';
+import { useSelector } from 'react-redux';
+import { AuthContext } from 'apps/react-sb/src/context';
 
 /* eslint-disable-next-line */
-export interface NavbarProps {}
+export interface NavbarProps { }
 
 export function Navbar(props: NavbarProps) {
+
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const [linkArray, setLinkArray] = useState<Array<ILinkItem>>([
     {
       path: '/users',
@@ -23,6 +28,13 @@ export function Navbar(props: NavbarProps) {
       title: 'product',
     },
   ]);
+
+  const logoutHandler = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsAuth(false);
+    localStorage.removeItem('auth');
+  }
+
   return (
     <div>
       <nav
@@ -70,11 +82,15 @@ export function Navbar(props: NavbarProps) {
                 className="p-button-outlined p-button-rounded"
               />
               <Button className="p-button p-button-rounded mx-3">Create</Button>
-              <ItemImage
-                srcImage="assets/user-ava/avatar6.png"
-                widthImage="36px"
-                variant={ImageVariant.rounded}
-              />
+
+              <div onClick={logoutHandler}>
+                <ItemImage
+                  srcImage="assets/user-ava/avatar6.png"
+                  widthImage="36px"
+                  variant={ImageVariant.rounded}
+                />
+              </div>
+
             </div>
           </div>
         </div>

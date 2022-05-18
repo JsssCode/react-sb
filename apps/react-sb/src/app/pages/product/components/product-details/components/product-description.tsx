@@ -1,46 +1,49 @@
 import ProfilePreview from '../../profile-preview/profile-preview';
-import { Card } from 'primereact/card';
-import React, { FC, useState } from 'react';
+
+import React, { FC, useEffect, useState } from 'react';
 import { IProduct } from '../../../../../types/product';
 import styles from '../product-details.module.scss';
 import ProductTitleSection from '../../product-title/product-title';
 import ProductStatistic from '../../product-statistic/product-statistic';
-import ProductService from '../../../../../api/product-service';
 
 interface IProductDescriptionProps {
   product: IProduct;
+  handleLike?: (product: IProduct) => void;
 }
 
-const ProductDescription: FC<IProductDescriptionProps> = ({ product }) => {
-  const [productData, setProductData] = useState<IProduct>(product);
+const ProductDescription: FC<IProductDescriptionProps> = ({ product, handleLike }) => {
 
-  const changeLikedState = async () => {
-    const response = await ProductService.changeLikedState(productData);
-    if (response) {
-      setProductData(response);
-    }
+  const handleLikeClick = () => {
+    handleLike && handleLike({
+      ...product,
+      info: { ...product.info, isLiked: !product.info.isLiked },
+      statistic: {
+        ...product.statistic,
+        like: product.statistic.like + (product.info.isLiked ? -1 : 1)
+      }
+    });
   };
   return (
     <div className={styles['card']}>
       <div className={styles['section']}>
         <ProductTitleSection
-          product={productData}
-          changeLikedState={changeLikedState}
+          product={product}
+          changeLikedState={handleLikeClick}
           withActions={true}
         />
         <div className={styles['description']}>
-          {productData.info.description}
+          {product.info.description}
         </div>
       </div>
       <div className="tag"></div>
       <div className={styles['section']}>
         <div className="person mt-5 flex">
-          <ProfilePreview profile={productData.info.creator}></ProfilePreview>
-          <ProfilePreview profile={productData.info.owner}></ProfilePreview>
+          <ProfilePreview profile={product.info.creator}></ProfilePreview>
+          <ProfilePreview profile={product.info.owner}></ProfilePreview>
         </div>
       </div>
       <div className={styles['section']}>
-        <ProductStatistic statistic={productData.statistic} isPreview={false} />
+        <ProductStatistic statistic={product.statistic} isPreview={false} />
       </div>
     </div>
   );

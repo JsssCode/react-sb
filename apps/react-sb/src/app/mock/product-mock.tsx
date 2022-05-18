@@ -2024,3 +2024,11 @@ export const mockPriceHistory: Array<IPriceHistory> = [
     currency: Currency.ETH,
   },
 ];
+
+
+export const mockUser = {
+  imgUrl: 'assets/user-ava/avatar1.png',
+  name: 'Mocked logged user1',
+  role: RoleType.OWNER,
+  id: 1,
+}

@@ -1,0 +1,274 @@
+{
+  "products": [
+    {
+      "id": 10,
+      "info": {
+        "isLiked": false,
+        "name": "updated name",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar2.png",
+          "name": "Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar1.png",
+          "name": "owner Name 1 owner Name 1 owner Name 1 owner Name 1 owner Name 1 owner Name 1 v owner Name 1 owner Name 1",
+          "role": "OWNER"
+        },
+        "description": "Product description 10 Product description 10 Product description 10 Product description 10Product description 10 Product description 10 Product description 10 Product description 10"
+      },
+      "imageArray": [
+        "assets/monkey/monkey1.png",
+        "assets/monkey/monkey2.png",
+        "assets/monkey/monkey3.png"
+      ],
+      "statistic": {
+        "rate": 2.4,
+        "costCourse": -1.14,
+        "watch": 20000,
+        "like": 12
+      }
+    },
+    {
+      "id": 11,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 11",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar2.png",
+          "name": "Creator Name 11",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar1.png",
+          "name": "owner Name 11",
+          "role": "OWNER"
+        },
+        "description": "Product description 11 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey1.png",
+        "assets/monkey/monkey2.png",
+        "assets/monkey/monkey3.png"
+      ],
+      "statistic": {
+        "rate": 5,
+        "costCourse": 22.23,
+        "watch": 122222,
+        "like": 1999
+      }
+    },
+    {
+      "id": 2,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 2",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar3.png",
+          "name": "Creator Name 2",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 2",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar4.png",
+          "name": "owner Name 2",
+          "role": "OWNER"
+        },
+        "description": "Product description 2 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey3.png",
+        "assets/monkey/monkey4.png",
+        "assets/monkey/monkey5.png"
+      ],
+      "statistic": {
+        "rate": 4.4,
+        "costCourse": 0.14,
+        "watch": 1234,
+        "like": 123
+      }
+    },
+    {
+      "id": 3,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 3",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar6.png",
+          "name": "Creator Name 3",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 3",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar5.png",
+          "name": "owner Name 3",
+          "role": "OWNER"
+        },
+        "description": "Product description 3 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey7.png",
+        "assets/monkey/monkey8.png",
+        "assets/monkey/monkey4.png"
+      ],
+      "statistic": {
+        "rate": 1.4,
+        "costCourse": -10.14,
+        "watch": 1234,
+        "like": 2
+      }
+    },
+    {
+      "id": 4,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 4",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar7.png",
+          "name": "Creator Name 4",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 4",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar5.png",
+          "name": "owner Name 4",
+          "role": "OWNER"
+        },
+        "description": "Product description 4 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey7.png",
+        "assets/monkey/monkey8.png",
+        "assets/monkey/monkey3.png"
+      ],
+      "statistic": {
+        "rate": 4.4,
+        "costCourse": 0.14,
+        "watch": 1234,
+        "like": 123
+      }
+    },
+    {
+      "id": 5,
+      "info": {
+        "isLiked": true,
+        "name": "Copy 5",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar7.png",
+          "name": "Creator Name 5",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 5",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar8.png",
+          "name": "owner Name 5",
+          "role": "OWNER"
+        },
+        "description": "Product description 5 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey2.png",
+        "assets/monkey/monkey1.png",
+        "assets/monkey/monkey3.png"
+      ],
+      "statistic": {
+        "rate": 4.2,
+        "costCourse": 0.25,
+        "watch": 222222,
+        "like": 2222
+      }
+    },
+    {
+      "id": 6,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 6",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar6.png",
+          "name": "Creator Name 6",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 6",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar7.png",
+          "name": "owner Name 6",
+          "role": "OWNER"
+        },
+        "description": "Product description 6 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey6.png",
+        "assets/monkey/monkey5.png",
+        "assets/monkey/monkey4.png"
+      ],
+      "statistic": {
+        "rate": 4.4,
+        "costCourse": 0.14,
+        "watch": 1234,
+        "like": 123
+      }
+    },
+    {
+      "id": 7,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 7",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar3.png",
+          "name": "Creator Name 7",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 7",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar.png",
+          "name": "owner Name 7",
+          "role": "OWNER"
+        },
+        "description": "Product description 7 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey7.png",
+        "assets/monkey/monkey6.png",
+        "assets/monkey/monkey5.png"
+      ],
+      "statistic": {
+        "rate": 4.4,
+        "costCourse": 0.14,
+        "watch": 1234,
+        "like": 123
+      }
+    },
+    {
+      "id": 8,
+      "info": {
+        "isLiked": false,
+        "name": "Copy 8",
+        "creator": {
+          "imgUrl": "assets/user-ava/avatar3.png",
+          "name": "Creator Name 8",
+          "role": "CREATOR"
+        },
+        "collection": "Collection Name 8",
+        "owner": {
+          "imgUrl": "assets/user-ava/avatar5.png",
+          "name": "owner Name 8",
+          "role": "OWNER"
+        },
+        "description": "Product description 8 "
+      },
+      "imageArray": [
+        "assets/monkey/monkey5.png",
+        "assets/monkey/monkey6.png",
+        "assets/monkey/monkey7.png"
+      ],
+      "statistic": {
+        "rate": 4.4,
+        "costCourse": 0.14,
+        "watch": 1234,
+        "like": 123
+      }
+    }
+  ]
+}

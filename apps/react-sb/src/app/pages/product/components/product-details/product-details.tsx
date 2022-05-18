@@ -5,31 +5,33 @@ import ProductDescription from './components/product-description';
 import { Button } from 'primereact/button';
 import ItemImage from '../../../../components/shared/item-image/item-image';
 import { useParams } from 'react-router-dom';
-import ProductService from '../../../../api/product-service';
+import ProductService, { productApi } from '../../../../api/product-service';
 import { TabView, TabPanel } from 'primereact/tabview';
 import ProductList, { ProductListVariants } from '../product-list/product-list';
 import ProductHistory from './components/product-history';
 import useFetching from '../../../../hooks/useRequest';
 import Loader from '../../../../components/loader/loader';
 import styles from './product-details.module.scss';
+import ProductList2 from '../product-list/product-list2';
 
 const ProductDetails = () => {
-  const params = useParams();
-  const [product, setProduct] = useState<IProduct>();
+  const { productId } = useParams();
+  // const [product, setProduct] = useState<IProduct>();
   const [currentImage, setCurrentImage] = useState<string>();
 
-  const [fetchProduct, isProductLoading, productError] = useFetching(
-    async (id: string) => {
-      const response = await ProductService.getById(parseInt(id, 10));
-      setProduct(response);
-    }
-  );
+  const { data: product, isLoading, error } = productApi.useGetProductByIdQuery(parseInt(productId || '1', 10));
+  const [updateProduct, { error: updateProductError, isLoading: updateProductLoading }] = productApi.useUpdateProductMutation()
 
-  useEffect(() => {
-    if (params['productId']) {
-      fetchProduct(params['productId']);
-    }
-  }, [params]);
+  const handleUpdate = (product: IProduct) => {
+    updateProduct(product);
+  }
+
+  // const [fetchProduct, isProductLoading, productError] = useFetching(
+  //   async (id: string) => {
+  //     const response = await ProductService.getById(parseInt(id, 10));
+  //     setProduct(response);
+  //   }
+  // );
 
   useEffect(() => {
     if (product?.imageArray) {
@@ -39,14 +41,14 @@ const ProductDetails = () => {
 
   return (
     <div className="flex flex-column justify-content-between mt-6">
-      {isProductLoading || !product ? (
+      {isLoading || !product ? (
         <div className={styles['loader']}>
           <Loader />
         </div>
       ) : (
         <div>
           <div>
-            <div className="layout grid grid-nogutter align-items-stretch ">
+            <div className="layout grid flex-column lg:flex-row  grid-nogutter lg:align-items-stretch align-items-center">
               <div className="flex justify-content-center col-6">
                 <div>
                   <div className="column">
@@ -69,7 +71,7 @@ const ProductDetails = () => {
 
               <div className="col-6 flex flex-column align-items-start">
                 <div className="flex flex-column align-items-center">
-                  <ProductDescription product={product} />
+                  <ProductDescription handleLike={handleUpdate} product={product} />
                   <div className="flex justify-content-center align-items-center mt-4">
                     <Button className="p-button-rounded">
                       <span className="px-4"> Buy for 12 ETH</span>
@@ -87,7 +89,7 @@ const ProductDetails = () => {
       )}
       <div className="mt-8 mx-3 mb-3">
         <div className="w-full">
-          <ProductList variant={ProductListVariants.PREVIEW} />
+          <ProductList2 variant={ProductListVariants.PREVIEW} />
         </div>
       </div>
     </div>
