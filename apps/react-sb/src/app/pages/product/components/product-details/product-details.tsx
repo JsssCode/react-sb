@@ -1,37 +1,35 @@
-import { Card } from 'primereact/card';
-import { FC, useEffect, useState } from 'react';
+
+import { useEffect, useState } from 'react';
 import { IProduct } from '../../../../types/product';
 import ProductDescription from './components/product-description';
 import { Button } from 'primereact/button';
 import ItemImage from '../../../../components/shared/item-image/item-image';
 import { useParams } from 'react-router-dom';
-import ProductService, { productApi } from '../../../../api/product-service';
-import { TabView, TabPanel } from 'primereact/tabview';
-import ProductList, { ProductListVariants } from '../product-list/product-list';
+import { ProductListVariants } from '../product-list/product-list';
 import ProductHistory from './components/product-history';
-import useFetching from '../../../../hooks/useRequest';
 import Loader from '../../../../components/loader/loader';
 import styles from './product-details.module.scss';
 import ProductList2 from '../product-list/product-list2';
+import { useAppDispatch, useAppSelector } from 'apps/react-sb/src/app/hooks/redux';
+import { getProduct, updateProduct } from 'apps/react-sb/src/store/reducers/actionCreators';
+import { LoadingType } from 'apps/react-sb/src/app/types/loadingType';
 
 const ProductDetails = () => {
   const { productId } = useParams();
-  // const [product, setProduct] = useState<IProduct>();
+  const dispatch = useAppDispatch();
+  const { product, loading, error } = useAppSelector(state => state.productReducer);
   const [currentImage, setCurrentImage] = useState<string>();
 
-  const { data: product, isLoading, error } = productApi.useGetProductByIdQuery(parseInt(productId || '1', 10));
-  const [updateProduct, { error: updateProductError, isLoading: updateProductLoading }] = productApi.useUpdateProductMutation()
+  useEffect(() => {
+    if (productId) {
+      dispatch(getProduct(productId));
+    }
+  }, [productId])
 
   const handleUpdate = (product: IProduct) => {
-    updateProduct(product);
+    dispatch(updateProduct(product));
   }
 
-  // const [fetchProduct, isProductLoading, productError] = useFetching(
-  //   async (id: string) => {
-  //     const response = await ProductService.getById(parseInt(id, 10));
-  //     setProduct(response);
-  //   }
-  // );
 
   useEffect(() => {
     if (product?.imageArray) {
@@ -41,7 +39,7 @@ const ProductDetails = () => {
 
   return (
     <div className="flex flex-column justify-content-between mt-6">
-      {isLoading || !product ? (
+      {loading && loading === LoadingType.LOAD || !product ? (
         <div className={styles['loader']}>
           <Loader />
         </div>
@@ -69,8 +67,15 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className="col-6 flex flex-column align-items-start">
-                <div className="flex flex-column align-items-center">
+              <div className="col flex flex-column align-items-center ">
+
+                <div className="flex flex-column align-items-center relative">
+                  {
+                    loading && loading === LoadingType.UPDATE &&
+                    <div className={styles['loader-container']}>
+                      <Loader />
+                    </div>
+                  }
                   <ProductDescription handleLike={handleUpdate} product={product} />
                   <div className="flex justify-content-center align-items-center mt-4">
                     <Button className="p-button-rounded">

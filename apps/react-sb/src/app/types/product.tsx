@@ -7,13 +7,13 @@ export interface IProduct {
   statistic: IStatistic;
 }
 
-interface IProductInfo {
+export interface IProductInfo {
   creator: IProfile;
   isLiked: boolean;
-  collection: string;
+  collection?: string;
   owner: IProfile;
-  description: string;
-  name: string;
+  description?: string;
+  name?: string;
 }
 
 export interface IStatistic {

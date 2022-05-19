@@ -12,11 +12,24 @@ export default class ProductService {
     });
   }
 
-  static getById(id: number): Promise<IProduct | undefined> {
-    return axios.get('http://localhost:5000/products/' + id).then((result: any) => {
+  static getById(id: number): Promise<IProduct> {
+    return axios.get<IProduct>('http://localhost:5000/products/' + id).then((result: any) => {
       return result.data;
     });
   }
+
+  static updateProduct(product: IProduct): Promise<IProduct> {
+    return axios.put<IProduct>(`http://localhost:5000/products/${product.id}`, product).then((result: any) => {
+      return result.data;
+    });
+  }
+
+  static createProduct(product: Partial<IProduct>): Promise<IProduct> {
+    return axios.post<IProduct>(`http://localhost:5000/products/${product.id}`, product).then((result: any) => {
+      return result.data;
+    });
+  }
+
 
   static changeLikedState(product: IProduct): Promise<IProduct | undefined> {
     return axios.get('https://dummyjson.com/products').then((result: any) => {

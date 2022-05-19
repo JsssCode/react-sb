@@ -5,6 +5,7 @@ import styles from './product-title.module.scss';
 import { Button } from 'primereact/button';
 import ProductService from '../../../../api/product-service';
 import { Menu } from 'primereact/menu';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export interface IProductTitleSection {
   product: IProduct;
@@ -19,10 +20,12 @@ const ProductTitleSection: FC<IProductTitleSection> = ({
 }) => {
   // eslint-disable-next-line prefer-const
   let menu = useRef<Menu>(null);
+  const navigate = useNavigate();
   const menuItems = [
     {
-      label: 'Update',
+      label: 'Update 1',
       icon: 'pi pi-refresh',
+      command: () => { navigate('./edit') }
     },
     {
       label: 'Delete',

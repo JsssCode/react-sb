@@ -4,13 +4,13 @@
       "id": 10,
       "info": {
         "isLiked": false,
-        "name": "updated name",
+        "name": "updated name 1",
         "creator": {
           "imgUrl": "assets/user-ava/avatar2.png",
           "name": "Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10 Creator Name 10",
           "role": "CREATOR"
         },
-        "collection": "Collection Name",
+        "collection": "Collection Name 1",
         "owner": {
           "imgUrl": "assets/user-ava/avatar1.png",
           "name": "owner Name 1 owner Name 1 owner Name 1 owner Name 1 owner Name 1 owner Name 1 v owner Name 1 owner Name 1",
@@ -183,7 +183,7 @@
     {
       "id": 6,
       "info": {
-        "isLiked": false,
+        "isLiked": true,
         "name": "Copy 6",
         "creator": {
           "imgUrl": "assets/user-ava/avatar6.png",
@@ -207,7 +207,7 @@
         "rate": 4.4,
         "costCourse": 0.14,
         "watch": 1234,
-        "like": 123
+        "like": 124
       }
     },
     {

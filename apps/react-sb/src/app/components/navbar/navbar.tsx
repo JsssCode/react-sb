@@ -81,7 +81,10 @@ export function Navbar(props: NavbarProps) {
                 iconPos="left"
                 className="p-button-outlined p-button-rounded"
               />
-              <Button className="p-button p-button-rounded mx-3">Create</Button>
+              <NavLink to="/product/create">
+                <Button className="p-button p-button-rounded mx-3">Create</Button>
+              </NavLink>
+
 
               <div onClick={logoutHandler}>
                 <ItemImage
